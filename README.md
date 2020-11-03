@@ -1,4 +1,5 @@
 # breadmanagementvue
+面包仓库管理系统前端
 
 ## Project setup
 ```
