@@ -71,7 +71,16 @@ export default {
             password: this.user.password,
           },
         }).then((res) => {
-          console.log(res);
+          console.log(res.data.status);
+          if (res.data.status == 200) {
+            console.log(res.data.token);
+            window.sessionStorage.setItem('token', res.data.token);
+            this.$router.push("/Home");
+          } else if (res.data.status == 210) {
+            alert(res.data.message);
+          } else {
+            alert(res.data.message);
+          }
         });
       }
     },
