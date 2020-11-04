@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
-import Home from "@/components/Home";
+import Home from '@/components/Home'
+import Welcome from '@/components/Welcome'
+import User from '@/components/User'
+import Stort from '@/components/Store'
+import Produce from '@/components/Produce'
 
 Vue.use(Router)
 
@@ -11,17 +15,36 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect:'/Login'
+      redirect: '/login'
     },
     {
-      path: '/Login',
-      name: 'Login',
+      path: '/login',
+      name: 'login',
       component: Login
     },
     {
-      path: '/Home',
-      name: 'Home',
-      component: Home
+      path: '/home',
+      name: 'home',
+      component: Home,
+      redirect:'/welcome',
+      children: [
+        {
+          path: '/welcome',
+          component: Welcome
+        },
+        {
+          path: '/user',
+          component: User
+        },
+        {
+          path: '/store',
+          component: Stort
+        },
+        {
+          path: '/produce',
+          component: Produce
+        }
+      ]
     }
   ]
 });

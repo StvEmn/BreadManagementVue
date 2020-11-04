@@ -14,51 +14,41 @@
           text-color="#fff"
           active-text-color="#409eff"
           unique-opened
+          router
         >
-          <el-submenu index="1">
+          <el-menu-item
+            :index="item.router"
+            :key="item.id"
+            v-for="item in menuList"
+          >
             <template slot="title">
-              <span>用户管理</span>
+              <span>{{ item.name }}</span>
             </template>
-            <el-menu-item index="1-1">
-              <template slot="title">
-                <span>导航一</span>
-              </template>
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="2">
-            <template slot="title">
-              <span>仓库管理</span>
-            </template>
-            <el-menu-item index="2-1">
-              <template slot="title">
-                <span>导航一</span>
-              </template>
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="3">
-            <template slot="title">
-              <span>产品管理</span>
-            </template>
-            <el-menu-item index="3-1">
-              <template slot="title">
-                <span>导航一</span>
-              </template>
-            </el-menu-item>
-          </el-submenu>
+          </el-menu-item>
         </el-menu>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view />
+      </el-main>
     </el-container>
   </el-container>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      menuList: [
+        { id: 1, name: "用户信息管理", router: "user" },
+        { id: 2, name: "仓库信息管理", router: "store" },
+        { id: 3, name: "产品信息管理", router: "produce" },
+      ],
+    };
+  },
   methods: {
     logout() {
       window.sessionStorage.clear();
-      this.$router.push("/Login");
+      //this.$router.push("/login");
+      console.log(this.menuList);
     },
   },
 };
@@ -88,7 +78,7 @@ body {
   background-color: #304156;
 }
 
-.el-aside>.el-menu{
+.el-aside > .el-menu {
   border-right: none;
 }
 

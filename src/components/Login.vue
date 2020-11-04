@@ -75,7 +75,7 @@ export default {
           if (res.data.status == 200) {
             console.log(res.data.token);
             window.sessionStorage.setItem('token', res.data.token);
-            this.$router.push("/Home");
+            this.$router.push("/home");
           } else if (res.data.status == 210) {
             alert(res.data.message);
           } else {
