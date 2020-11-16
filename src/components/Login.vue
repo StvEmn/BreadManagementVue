@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div style="display: flex; justify-content: center; margin-top: 150px">
+  <div class="login-body">
+    <div style="display: flex; justify-content: center; height: 260px">
       <el-card style="width: 400px">
         <div slot="header" class="clearfix">
           <span>面包仓库管理系统</span>
         </div>
-        <table align="center">
+        <table style="width: 100%">
           <tr>
             <td align="left">用户名</td>
             <td>
@@ -28,9 +28,9 @@
             </td>
           </tr>
           <tr>
-            <td colspan="2">
+            <td colspan="2" style="height: 50px">
               <!-- 点击事件的两种不同的写法v-on:click和 @click-->
-              <el-button style="width: 300px" type="primary" @click="doLogin"
+              <el-button style="width: 100%" type="primary" @click="doLogin"
                 >登录</el-button
               >
             </td>
@@ -41,9 +41,26 @@
   </div>
 </template>
 <style>
+html {
+  background-image: url("../assets/background.png");
+}
+tr {
+  height: 50px;
+}
 .clearfix {
-  font-size: 20px;
+  font-size: 22px;
   text-align: center;
+}
+.clearfix > span {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.login-body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 <script>
@@ -74,7 +91,7 @@ export default {
           console.log(res.data.status);
           if (res.data.status == 200) {
             console.log(res.data.token);
-            window.sessionStorage.setItem('token', res.data.token);
+            window.sessionStorage.setItem("token", res.data.token);
             this.$router.push("/home");
           } else if (res.data.status == 210) {
             alert(res.data.message);

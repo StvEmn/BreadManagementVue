@@ -8,7 +8,7 @@
       <el-button type="info" @click="logout" class="logout">退出</el-button>
     </el-header>
     <el-container>
-      <el-aside width="200px">
+      <el-aside>
         <el-menu
           background-color="#545c64"
           text-color="#fff"
@@ -75,11 +75,18 @@ body {
 }
 
 .el-aside {
+  width: 160px !important;
   background-color: #304156;
 }
 
 .el-aside > .el-menu {
   border-right: none;
+}
+
+.el-menu-item {
+  text-align: center;
+  background-color: #1f2d3d !important;
+  font-size: 15px !important;
 }
 
 .el-main {
