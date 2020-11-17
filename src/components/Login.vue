@@ -53,7 +53,7 @@ html {
   background-image: url("../assets/background.png");
 }
 tr {
-  height: 60px;
+  height: 50px;
 }
 .clearfix {
   font-size: 22px;
